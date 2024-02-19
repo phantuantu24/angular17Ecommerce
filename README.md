@@ -1,1 +1,1 @@
-# angular17Ecommerce
+# angular17Ecommerce demo project
