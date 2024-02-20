@@ -13,8 +13,8 @@ import { CheckoutComponent } from './customer/buyer/checkout/checkout.component'
 import { PageNotFoundComponent } from './shared/layouts/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'my-profile', component: UserProfileComponent },
   { path: 'contact-us', component: ContactUsComponent },
   // admin
