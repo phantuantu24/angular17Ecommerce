@@ -1,1 +1,89 @@
-<p>admin-dashboard works!</p>
+<br>
+<div class="jumbotron p-3 p-md-2 text-white rounded bg-dark">
+  <div>
+    <h3 class="display-4 font-italic text-center">Welcome to Admin Dashboard</h3>
+    <p class="lead my-3 text-center">Admin can manage user and product details</p>
+  </div>
+</div>
+
+<!-- user detail and product details -->
+<div class="row mb-2 container-fluid">
+  <!-- User -->
+  <div class="col-md-6 user-panel" (click)="redirectTo('user')" role="button">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">Users</strong>
+        <h3 class="mb-0">Manage user</h3>
+
+        <div class="progressbar-div">
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{ 'width.%': adminUser }"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              Admin: {{ adminUser }}
+            </div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-info" role="progressbar" [ngStyle]="{ 'width.%': sellerUser }"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              Seller User: {{ sellerUser }}
+            </div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-warning" role="progressbar" [ngStyle]="{ 'width.%': buyerUser }"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              Buyer User: {{ buyerUser }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <svg class="bd-placeholder-img" width="200" height="220" xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+          <title>Manage Users</title>
+          <rect width="100%" height="100%" fill="#55595c" /> <text x="30%" y="50%" fill="#eceeef" dy=".3em">
+            Total Users: {{ totalUser }}
+          </text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <!-- Product -->
+  <div class="col-md-6 product-panel" (click)="redirectTo('product')" role="button">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">Products</strong>
+        <h3 class="mb-0">Manage product</h3>
+
+        <div class="progressbar-div">
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{ 'width.%': publishProduct }"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              Publish Products: {{ publishProduct }}
+            </div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-info" role="progressbar" [ngStyle]="{ 'width.%': inactiveProduct }"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              Inactive Products: {{ inactiveProduct }}
+            </div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-warning" role="progressbar" [ngStyle]="{ 'width.%': draftProduct }"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              Draft Products: {{ draftProduct }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <svg class="bd-placeholder-img" width="200" height="220" xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+          <title>Manage Products</title>
+          <rect width="100%" height="100%" fill="#55595c" /> <text x="22%" y="50%" fill="#eceeef" dy=".3em">
+            Total Products: {{ totalProduct }}
+          </text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>

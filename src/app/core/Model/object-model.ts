@@ -31,7 +31,7 @@ export interface Product {
   uploadDesc: string;
   mrp: number;
   dp: number;
-  status: boolean
+  status: string
 }
 
 export interface Order {

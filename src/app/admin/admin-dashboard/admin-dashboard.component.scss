@@ -1,0 +1,18 @@
+.progressbar-div {
+  .progress {
+    margin-top: 0.7rem;
+    height: 1.5em;
+    &-bar {
+      color: #000;
+      font-weight: bold;
+    }
+  }
+}
+
+.user-panel {
+  padding: 0 1rem 0 2rem;
+}
+
+.product-panel {
+  padding: 0 0 0 1rem;
+}

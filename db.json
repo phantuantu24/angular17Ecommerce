@@ -1,6 +1,7 @@
 {
   "user": [
     {
+      "id": 1,
       "name": "Phan Tuan Tu",
       "mobNumber": "0392238575",
       "age": 27,
@@ -22,11 +23,10 @@
       "abouYou": "I'm bad boy, but not a bad choice",
       "uploadPhoto": "",
       "agreetc": true,
-      "role": "admin",
-      "id": 1
+      "role": "admin"
     },
     {
-      "id": "1",
+      "id": 2,
       "name": "Seller",
       "mobNumber": "0392238575",
       "age": 27,
@@ -56,7 +56,7 @@
       }
     },
     {
-      "id": "2",
+      "id": 3,
       "name": "Seller",
       "mobNumber": "0392238575",
       "age": 27,
