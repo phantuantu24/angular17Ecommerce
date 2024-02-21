@@ -1,1 +1,147 @@
-<p>signin-signup works!</p>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Registration - Angular 17 Reactive Form with Validation</h3>
+        <form [formGroup]="signUpForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" formControlName="name">
+          </div>
+          <div class="form-group">
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" class="form-control" formControlName="mobNumber">
+          </div>
+          <div class="form-group">
+            <label for="age">Enter Your Age</label>
+            <input type="number" class="form-control" formControlName="age">
+          </div>
+          <div class="form-group">
+            <label for="dob">Enter Your DOB</label>
+            <input type="date" class="form-control" formControlName="dob">
+          </div>
+
+          <!---------------------New Row-------------------->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" placeholder="phantuantu@secure.janeto.com"
+                formControlName="email" autocomplete="username">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" placeholder="password" formControlName="password" autocomplete="current-password">
+            </div>
+            <div class="form-group">
+              <label for="address1">Address</label>
+              <input type="text" class="form-control" placeholder="12/4 street A" formControlName="addLine1">
+            </div>
+            <div class="form-group">
+              <label for="address2">Address 2</label>
+              <input type="text" class="form-control" placeholder="Apratment, floor" formControlName="addLine2">
+            </div>
+          </div>
+
+          <!---------------------New Row-------------------->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="city">City</label>
+              <input type="text" class="form-control" placeholder="American, VietNam" formControlName="city">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="state">State</label>
+              <select id="inputState" class="form-control" formControlName="state">
+                <option value="Q1">Q1</option>
+                <option value="Q2">Q2</option>
+                <option value="Q3">Q3</option>
+                <option value="Q4">Q4</option>
+                <option value="Q5">Q5</option>
+                <option value="Q6">Q6</option>
+                <option value="Q7">Q7</option>
+                <option value="Q8">Q8</option>
+                <option value="Q9">Q9</option>
+                <option value="Q10">Q10</option>
+                <option value="Q11">Q11</option>
+                <option value="Q12">Q12</option>
+                <option value="GV">GV</option>
+              </select>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="zip">Zip Code</label>
+              <input type="text" class="form-control" placeholder="12/4 street A" formControlName="zipCode">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="language">Language</label>
+            <select multiple class="form-control" formControlName="language">
+              <option>Hindi</option>
+              <option>English</option>
+              <option>Telgu</option>
+              <option>Odiya</option>
+              <option>Bhojpuri</option>
+              <option>Others</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <div class="form-check form-check-inline">
+              <input type="radio" class="form-check-inline" formControlName="gender" value="Male">
+              <label for="male" class="form-check-inline">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" class="form-check-inline" formControlName="gender" value="Female">
+              <label for="female" class="form-check-inline">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" class="form-check-inline" formControlName="gender" value="Others">
+              <label for="others" class="form-check-inline">Others</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="somethingAboutYou">Something About You</label>
+            <textarea class="form-control" id="something" rows="3" formControlName="aboutYou"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="uploadPhoto">Upload Your Photo</label>
+            <input type="file" class="form-control" formControlName="uploadPhoto">
+          </div>
+          <div class="form-group">
+            <input type="checkbox" class="form-check-inline" formControlName="agreetc">
+            <label for="agreetc" class="form-check-inline">Terms and Conditions</label>
+          </div>
+          <div class="form-group">
+            <label for="role">What do you want?</label>
+            <select class="form-control" formControlName="role">
+              <option value="seller">Seller</option>
+              <option value="seller">Buyer</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" (click)="onSubmitSignUp()">Register</button>
+          </div>
+        </form>
+
+        <!-- Login Form here -->
+        <p class="sim-pointer" routerLink="/sign-in">Already have an account, click here to Login</p>
+      </div>
+      <div class="col-md-6 offset-md-3">
+        <h3>Login - Angular 17 Template driven form with Validation</h3>
+        <form>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="userEmail" autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="userPassword" autocomplete="current-password">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Login</button>
+          </div>
+        </form>
+        <p class="sim-pointer" routerLink="/sign-up">Don't have an account, click here to Register</p>
+      </div>
+    </div>
+  </div>
+</div>

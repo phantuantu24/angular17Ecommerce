@@ -14,13 +14,46 @@
         "state": "GV",
         "zipCode": "70000"
       },
-      "language": ["English", "Vietnamese"],
+      "language": [
+        "English",
+        "Vietnamese"
+      ],
       "gender": "Male",
       "abouYou": "I'm bad boy, but not a bad choice",
       "uploadPhoto": "",
       "agreetc": true,
       "role": "admin",
       "id": 1
+    },
+    {
+      "id": "a5af",
+      "name": "Phan Tuan Tu",
+      "mobNumber": "0392238575",
+      "age": 27,
+      "dob": "1997-04-02",
+      "email": "admin@gmail.com",
+      "password": "impl1admin",
+      "addLine1": "57 QL13 P26 QBinhThanh",
+      "addLine2": "Floor 2, Morning Star Building",
+      "city": "HCM",
+      "state": "GV",
+      "zipCode": "70000",
+      "language": [
+        "English"
+      ],
+      "gender": "Male",
+      "aboutYou": "Nothing to say",
+      "uploadPhoto": "C:\\fakepath\\phantuantu.jfif",
+      "agreetc": true,
+      "role": "seller",
+      "address": {
+        "id": 0,
+        "addLine1": "57 QL13 P26 QBinhThanh",
+        "addLine2": "Floor 2, Morning Star Building",
+        "city": "HCM",
+        "state": "GV",
+        "zipCode": "70000"
+      }
     }
   ],
   "products": [

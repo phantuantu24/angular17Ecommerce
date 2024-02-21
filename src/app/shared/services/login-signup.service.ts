@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiService } from '../../core/service/api.service';
+import { User } from '../../core/Model/object-model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class LoginSignupService {
     return this.apiService.get(url);
   }
 
-  userRegister(userDto: any) {
+  userRegister(userDto: User) {
     return this.apiService.post(`${this.baseUrl}/user`, userDto);
   }
 
