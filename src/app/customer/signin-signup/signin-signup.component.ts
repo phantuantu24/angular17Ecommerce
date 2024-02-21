@@ -94,7 +94,6 @@ export class SigninSignupComponent {
 
   onSubmitSignIn() {
     const { userEmail, userPassword } = this.signInFormValue;
-    console.log(this.signInFormValue);
     
     const observer = this.loginSignupService.authLogin(userEmail, userPassword);
     observer.subscribe((res) => {
