@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Language
           </a>
@@ -16,7 +16,7 @@
             <li><a class="dropdown-item" href="#">ENG</a></li>
             <li><a class="dropdown-item" href="#">HIN</a></li>
           </ul>
-        </li>
+        </li> -->
 
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -24,21 +24,31 @@
         <li class="nav-item">
           <a class="nav-link disabled" href="#">About Us</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/my-order">Order B</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/all-order">All Order A</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/seller/product">Product</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/admin/product">All Product A</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/admin/user">User A</a>
-        </li>
+
+        @switch(userRole) {
+          @case ('buyer') {
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/my-order">Order</a>
+            </li>
+          }
+          @case ('admin') {
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/all-order">All Order</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/admin/product">All Product A</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/admin/user">User A</a>
+            </li>
+          }
+          @case ('seller') {
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/seller/product">Product</a>
+            </li>
+          }
+        }
+        
         <li class="nav-item">
           <a class="nav-link" routerLink="/">Contact Us</a>
         </li>
@@ -49,22 +59,25 @@
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
 
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/sign-in">Sign In</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/sign-up">Sign Up</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link sim-pointer" routerLink="/my-profile">My Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link sim-pointer">Log Out</a>
-        </li>
-      </ul>
+      @if (!loggedIn) {
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/sign-in">Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/sign-up">Sign Up</a>
+          </li>
+        </ul>
+      } @else {
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link sim-pointer" routerLink="/my-profile">My Profile</a>
+          </li>
+          <li class="nav-item">
+            <a role="button" class="nav-link sim-pointer" (click)="logOut()">Log Out</a>
+          </li>
+        </ul>
+      }
 
     </div>
   </div>

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +8,26 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, DoCheck {
+  loggedIn: boolean = false;
+  language: string = 'en';
+  userRole: string | null = '';
 
+  constructor(private router: Router) {}
+
+  ngDoCheck(): void {
+    this.userRole = sessionStorage.getItem('role');
+    const user_session_id = sessionStorage.getItem('user_session_id');
+    user_session_id && (this.loggedIn =  true);
+  }
+
+  ngOnInit(): void {
+    
+  }
+
+  logOut() {
+    this.loggedIn = false;
+    sessionStorage.clear();
+    this.router.navigateByUrl('/sign-in')
+  }
 }

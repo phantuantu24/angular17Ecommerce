@@ -26,13 +26,13 @@
       "id": 1
     },
     {
-      "id": "a5af",
-      "name": "Phan Tuan Tu",
+      "id": "1",
+      "name": "Seller",
       "mobNumber": "0392238575",
       "age": 27,
       "dob": "1997-04-02",
-      "email": "admin@gmail.com",
-      "password": "impl1admin",
+      "email": "seller@gmail.com",
+      "password": "123456",
       "addLine1": "57 QL13 P26 QBinhThanh",
       "addLine2": "Floor 2, Morning Star Building",
       "city": "HCM",
@@ -46,6 +46,36 @@
       "uploadPhoto": "C:\\fakepath\\phantuantu.jfif",
       "agreetc": true,
       "role": "seller",
+      "address": {
+        "id": 0,
+        "addLine1": "57 QL13 P26 QBinhThanh",
+        "addLine2": "Floor 2, Morning Star Building",
+        "city": "HCM",
+        "state": "GV",
+        "zipCode": "70000"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Seller",
+      "mobNumber": "0392238575",
+      "age": 27,
+      "dob": "1997-04-02",
+      "email": "buyer@gmail.com",
+      "password": "123456",
+      "addLine1": "57 QL13 P26 QBinhThanh",
+      "addLine2": "Floor 2, Morning Star Building",
+      "city": "HCM",
+      "state": "GV",
+      "zipCode": "70000",
+      "language": [
+        "English"
+      ],
+      "gender": "Female",
+      "aboutYou": "Nothing to say",
+      "uploadPhoto": "C:\\fakepath\\phantuantu.jfif",
+      "agreetc": true,
+      "role": "buyer",
       "address": {
         "id": 0,
         "addLine1": "57 QL13 P26 QBinhThanh",
