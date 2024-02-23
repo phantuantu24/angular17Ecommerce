@@ -29,8 +29,6 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getAdminUserDashboard();
     this.getAdminProductDashboard();
-    console.log(this.adminUser);
-
   }
 
   redirectTo(url: string) {

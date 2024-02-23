@@ -28,7 +28,7 @@ export class AdminService {
     return this.apiService.post(`${this.userUrl}/`, userDto);
   }
 
-  getUserDetail(userId: string | number) {
+  getUserDetail(userId: string) {
     return this.apiService.get(`${this.userUrl}/${userId}`)
   }
 

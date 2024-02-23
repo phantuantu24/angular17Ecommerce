@@ -1,1 +1,187 @@
-<p>user-crud works!</p>
+<br>
+<div class="row">
+  <div class="col-md-10">
+    <strong>All User List</strong>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-dark float-right" (click)="addUserPopup()" data-bs-toggle="modal"
+      data-bs-target="#addEditUserModal">
+      Add New User
+    </button>
+  </div>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Mobile Number</th>
+      <th scope="col">Email</th>
+      <th scope="col">DOB</th>
+      <th scope="col">City</th>
+      <th scope="col">Role</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (userData of allUserData; track trackUsers; let i = $index) {
+      <tr>
+        <th scope="row">{{ i+1 }}</th>
+        <td>{{ userData.name }}</td>
+        <td>{{ userData.mobNumber }}</td>
+        <td>{{ userData.email }}</td>
+        <td>{{ userData.dob }}</td>
+        <td>{{ userData.address.city }}</td>
+        <td>{{ userData.role }}</td>
+        <td>
+          <span class="sim-pointer" (click)="editUserPopup(userData.id)" data-bs-toggle="modal" data-bs-target="#addEditUserModal">Edit</span> &nbsp;
+          <span class="sim-pointer" (click)="deleteUser(userData.id)" data-bs-toggle="modal" data-bs-target="#addEditUserModal">Del</span>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<!-- Modal for add/edit User -->
+<div class="modal fade" id="addEditUserModal" tabindex="-1" role="dialog" aria-labelledby="addEditUserModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">{{popupHeader}}</div>
+        <button class="close" data-bs-dismiss="modal" aria-label="close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <form [formGroup]="addEditUserForm">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" formControlName="name">
+              </div>
+              <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" class="form-control" formControlName="mobNumber">
+              </div>
+              <div class="form-group">
+                <label for="age">Enter Your Age</label>
+                <input type="number" class="form-control" formControlName="age">
+              </div>
+              <div class="form-group">
+                <label for="dob">Enter Your DOB</label>
+                <input type="date" class="form-control" formControlName="dob">
+              </div>
+    
+              <!---------------------New Row-------------------->
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" placeholder="phantuantu@secure.janeto.com"
+                    formControlName="email" autocomplete="username">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" placeholder="password" formControlName="password"
+                    autocomplete="current-password">
+                </div>
+                <div class="form-group">
+                  <label for="address1">Address</label>
+                  <input type="text" class="form-control" placeholder="12/4 street A" formControlName="addLine1">
+                </div>
+                <div class="form-group">
+                  <label for="address2">Address 2</label>
+                  <input type="text" class="form-control" placeholder="Apratment, floor" formControlName="addLine2">
+                </div>
+              </div>
+    
+              <!---------------------New Row-------------------->
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="city">City</label>
+                  <input type="text" class="form-control" placeholder="American, VietNam" formControlName="city">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="state">State</label>
+                  <select id="inputState" class="form-control" formControlName="state">
+                    <option value="Q1">Q1</option>
+                    <option value="Q2">Q2</option>
+                    <option value="Q3">Q3</option>
+                    <option value="Q4">Q4</option>
+                    <option value="Q5">Q5</option>
+                    <option value="Q6">Q6</option>
+                    <option value="Q7">Q7</option>
+                    <option value="Q8">Q8</option>
+                    <option value="Q9">Q9</option>
+                    <option value="Q10">Q10</option>
+                    <option value="Q11">Q11</option>
+                    <option value="Q12">Q12</option>
+                    <option value="GV">GV</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="zip">Zip Code</label>
+                  <input type="text" class="form-control" placeholder="12/4 street A" formControlName="zipCode">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="language">Language</label>
+                <select multiple class="form-control" formControlName="language">
+                  <option value="Hindi">Hindi</option>
+                  <option value="English">English</option>
+                  <option value="Telgu">Telgu</option>
+                  <option value="Odiya">Odiya</option>
+                  <option value="Bhojpuri">Bhojpuri</option>
+                  <option value="Others">Others</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <div class="form-check form-check-inline">
+                  <input type="radio" class="form-check-inline" formControlName="gender" value="Male">
+                  <label for="male" class="form-check-inline">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="radio" class="form-check-inline" formControlName="gender" value="Female">
+                  <label for="female" class="form-check-inline">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="radio" class="form-check-inline" formControlName="gender" value="Others">
+                  <label for="others" class="form-check-inline">Others</label>
+                </div>
+              </div>
+    
+              <div class="form-group">
+                <label for="somethingAboutYou">Something About You</label>
+                <textarea class="form-control" id="something" rows="3" formControlName="aboutYou"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="uploadPhoto">Upload Your Photo</label>
+                <input type="file" class="form-control" formControlName="uploadPhoto">
+              </div>
+              <div class="form-group">
+                <input type="checkbox" class="form-check-inline" formControlName="agreetc">
+                <label for="agreetc" class="form-check-inline">Terms and Conditions</label>
+              </div>
+              <div class="form-group">
+                <label for="role">Choose the role</label>
+                <select class="form-control" formControlName="role">
+                  <option value="admin">Admin</option>
+                  <option value="seller">Seller</option>
+                  <option value="seller">Buyer</option>
+                </select>
+              </div>
+              <div class="form-group">
+                @if (isAddUser) {
+                  <button class="btn btn-primary" data-bs-dismiss="modal" (click)="addUser()">Register</button>
+                } @else {
+                  <button class="btn btn-primary" data-bs-dismiss="modal" (click)="updateUser()">Update</button>
+                }
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

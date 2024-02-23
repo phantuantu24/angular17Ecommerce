@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from '../services/admin.service';
-import { User } from '../../core/Model/object-model';
-declare var JQuery: any;
+import { Address, User } from '../../core/Model/object-model';
+declare var $: any;
 
 @Component({
   selector: 'app-user-crud',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './user-crud.component.html',
   styleUrl: './user-crud.component.scss'
 })
@@ -23,7 +23,7 @@ export class UserCrudComponent implements OnInit {
   uploadFileName!: string;
   addEditUser: boolean = false; // For form validation
   isAddUser: boolean = false;
-  popupheader!: string;
+  popupHeader!: string;
   singleFormValue: Object = {};
 
   constructor(
@@ -67,7 +67,7 @@ export class UserCrudComponent implements OnInit {
 
   addUserPopup() {
     this.isAddUser = true;
-    this.popupheader = "Add new User";
+    this.popupHeader = "Add new User";
     this.addEditUserForm.reset();
   }
 
@@ -91,29 +91,30 @@ export class UserCrudComponent implements OnInit {
         }
       }
 
-      this.adminService.addUser(this.userDto).subscribe((res) => {
+      this.adminService.addUser(this.userDto).subscribe((_res) => {
+        this.addEditUserForm.reset();
         this.getAllUser();
-        JQuery('#addEditUserModal').modal('toggle');
+        // $('#addEditUserModal').modal('toggle');
       })
     }
   }
 
-  editUserPopup(userId: string | number) {
+  editUserPopup(userId: string) {
     this.editUserId = userId;
     this.isAddUser = false;
-    this.popupheader = 'Edit User';
+    this.popupHeader = 'Edit User';
+
     this.adminService.getUserDetail(userId).subscribe((res) => {
       this.signleUserData = res;
-      this.uploadFileName = this.signleUserData.uploadPhoto;
+      delete (this.signleUserData as Partial<User>).id;
 
-      const { addLine1, addLine2, city, state, zipCode } = this.signleUserData.address;
+      this.uploadFileName = this.signleUserData.uploadPhoto;
+      const { address, ...rest } = this.signleUserData;
+      delete (address as Partial<Address>).id;
+
       this.addEditUserForm.setValue({
-        ...this.signleUserData,
-        addLine1,
-        addLine2,
-        city,
-        state,
-        zipCode,
+        ...rest,
+        ...address,
         uploadPhoto: ''
       })
     })
@@ -125,9 +126,10 @@ export class UserCrudComponent implements OnInit {
       return;
     } else {
       this.userRegData = this.addEditUserForm.value;
-      const { addLine1, addLine2, city, state, zipCode, uploadPhoto } = this.userRegData;
+      const { addLine1, addLine2, city, state, zipCode } = this.userRegData;
       this.userDto = {
         ...this.userRegData,
+        id: this.editUserId,
         address: {
           id: 0,
           addLine1,
@@ -136,17 +138,21 @@ export class UserCrudComponent implements OnInit {
           state,
           zipCode
         },
-        uploadPhoto: uploadPhoto || this.uploadFileName
       }
 
       this.adminService.editUser(this.userDto).subscribe((res) => {
+        this.addEditUserForm.reset();
         this.getAllUser();
-        JQuery('#addEditUserModal').modal('toggle');
+        // $('#addEditUserModal').modal('toggle');
       })
     }
   }
 
   deleteUser(userId: string | number) {
     this.adminService.deleteUser(userId).subscribe((_res) => this.getAllUser());
+  }
+
+  trackUsers(_index: number, user: User) {
+    return user.id;
   }
 }
